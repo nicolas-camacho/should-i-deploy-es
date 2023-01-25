@@ -1,38 +1,72 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+This project has been created just for learning purposes, using the following resources:
 
-First, run the development server:
+ - [Should I deploy today](https://shouldideploy.today/) - This app has been taken as a base for the development of this project, taking advantage of its idea, architecture and API
+ - [OpenAI](https://openai.com/api/) - In order to translate the messages received by the "Should I deploy" API, the Open AI API is used through the completion's functionality 
+
+# Running the project
+
+This project can be visualized in three ways, both ways need you to have an environment variable, since it is using the OpenAi API to perform the translation of the messages.
+
+## Set up ENV variable
+
+create a `.env.local` file and add:
+
+```
+OPENAI_API_KEY={"your OpenAI API key"}
+```
+
+## Firts way (using local enviroment)
+
+You can clone the repository and use node to run the project
 
 ```bash
+npm install
 npm run dev
 # or
+yarn install
 yarn dev
 # or
+pnpm install
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Second way (deploying the project)
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+Here you can use your favorite service to deploy the project, just make sure of setting the environment variable.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## Third way (Docker)
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Make sure you have docker install in your machine and have created the `.env.local` file once you cloned the repository.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```bash
+docker build -t {name of image}
+# then
+docker run -p 3000:3000 --env-file ./.env.local {name of image}
+```
 
-## Learn More
+# Testing the project
 
-To learn more about Next.js, take a look at the following resources:
+This project implement [Playwright](https://playwright.dev/) for making e2e testing, you can run the test locally in the following way:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm run build
+npm start
+# or
+yarn build
+yarn start
+# or
+pnpm build
+pnpm start
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Then in another terminal run:
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```bash
+npm run test:e2e
+# or
+yarn run test:e2e
+# or
+pnpm run test:e2e
+```
