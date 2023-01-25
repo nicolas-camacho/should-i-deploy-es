@@ -12,7 +12,7 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
-RUN pnpm run build
+RUN yarn build
 
 FROM node:16-alpine AS runner
 WORKDIR /app
