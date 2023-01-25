@@ -5,7 +5,7 @@ WORKDIR /app
 
 COPY package.json pnpm-lock.yaml* ./
 
-RUN npm install -g pnpm && pnpm install --frozen-lockfile
+RUN yarn add global pnpm && pnpm install --frozen-lockfile
 
 FROM node:16-alpine AS builder
 WORKDIR /app
