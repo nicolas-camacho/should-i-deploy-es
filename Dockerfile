@@ -5,7 +5,9 @@ WORKDIR /app
 
 COPY package.json pnpm-lock.yaml* ./
 
-RUN npm install -g pnpm && pnpm install --frozen-lockfile
+RUN wget -qO /bin/pnpm "https://github.com/pnpm/pnpm/releases/latest/download/pnpm-linuxstatic-x64" && chmod +x /bin/pnpm
+
+RUN pnpm install --frozen-lockfile
 
 FROM node:16-alpine AS builder
 WORKDIR /app
