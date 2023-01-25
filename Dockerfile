@@ -5,15 +5,7 @@ WORKDIR /app
 
 COPY package.json pnpm-lock.yaml* ./
 
-RUN npm i -g npm@latest; \
-    npm install -g pnpm; \
-    pnpm --version; \
-    pnpm setup; \
-    mkdir -p /usr/local/share/pnpm && \
-    export PNPM_HOME="/usr/local/share/pnpm" &&\
-    export PATH="$PNPM_HOME:$PATH"; \
-    pnpm bin -g &&\
-    pnpm install --frozen-lockfile
+RUN npm install -g pnpm && pnpm install --frozen-lockfile
 
 FROM node:16-alpine AS builder
 WORKDIR /app
