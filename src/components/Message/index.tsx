@@ -8,7 +8,7 @@ export interface MessageProps {
 
 const Message = (props: MessageProps) => {
     if (props.error) return <h2 className={styles.message}>Error al cargar</h2>
-    if (props.loading) return <h2 className={styles.message}>Cargando...</h2>
+    if (props.loading) return <h2 className={`${styles.message} ${styles.loading}`}>Cargando</h2>
     
     return <h2 className={styles.message}>{props.message}</h2>
 }
