@@ -33,7 +33,7 @@ export default function Home() {
         <div className={styles.center}>
           <h1 className={styles.title}>¿ Deberia lanzar a producción hoy ?</h1>
           <Message message={data?.message} error={error} loading={isLoading || loading} />
-          <button className={styles.button} onClick={refetchMessage}>Refresh</button>
+          <button className={styles.button} onClick={refetchMessage}>Recargar</button>
         </div>
       </main>
     </>
