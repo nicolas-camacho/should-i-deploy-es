@@ -1,0 +1,16 @@
+.message {
+    font-size: 6rem;
+    font-weight: bolder;
+    margin: 0;
+    text-align: center;
+    font-family: var(--font-sans);
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+
+    .message {
+        font-size: 4rem;
+    }
+
+}
