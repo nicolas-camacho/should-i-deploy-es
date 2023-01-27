@@ -30,12 +30,12 @@ async function fetchShouldideploy<apiResponse>(): Promise<apiResponse> {
   return data as apiResponse
 }
 
-export default function handler(
+export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<apiResponse>
 ) {
-  
-  fetchShouldideploy<apiResponse>().then((data) => {
-    res.status(200).json(data)
-  })
+
+  const response = await fetchShouldideploy<apiResponse>()
+
+  res.status(200).json(response)
 }

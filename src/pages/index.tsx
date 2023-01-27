@@ -12,7 +12,11 @@ export default function Home() {
 
   const [loading, setLoading] = useState(false)
 
-  const { data, error, isLoading, mutate } = useSWR('/api/message', fetcher);
+  const { data, error, isLoading, mutate } = useSWR('/api/message', fetcher, {
+    revalidateOnFocus: false,
+    revalidateOnReconnect: false,
+    refreshWhenOffline: false,
+  });
 
   const refetchMessage = async () => {
     setLoading(true)
